@@ -23,6 +23,8 @@
 //     return second;
 // }
 
+mod util1;
+
 fn get_len_str(sa:String) -> usize{
     sa.chars().count()
 }
@@ -33,6 +35,25 @@ struct User{
     age:i32
 
 }
+
+// a class like implementation in rust using struct
+
+struct Rect{
+    width:i32,
+    height:i32
+}
+
+impl Rect{
+    //implementing a method inside a particular class in rust
+    fn area(&self) ->i32 {
+        self.width*self.height
+    }
+    // If we want to implement static method we can do it this way
+    fn print_static_value() -> i32{
+        return 2
+    }
+}
+
 fn main() {
     let s=String::from("Hello World!");
     let length = get_len_str(s);
@@ -41,6 +62,15 @@ fn main() {
         last_name: String::from("Last name"),
         age: 32
     };
+    let rectangle=Rect{
+        width:32,
+        height:32
+    };
+
+    println!("Area of the rectangle is {}",rectangle.area());
+    println!("printing from the static method{}",Rect::print_static_value());
+    println!("testing from differentfile {}",util1::testing_stuff_from_diff_file());
+    println!(" ");
     println!("username is {}",user.first_name);
     println!("username lastname is {}",user.last_name);
     println!("username age is {}",user.age);

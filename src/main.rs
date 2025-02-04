@@ -1,32 +1,29 @@
 use enums::{print_enum, shape};
-
+mod optresenum;
+use optresenum::find_first_a;
 mod util1;
 mod enums;
 
+use std::fs::read_to_string;
 
 fn main() {
-    let s=String::from("Hello World!");
-    let length = util1::get_len_str(s);
-    let user=util1::User{
-        first_name: String::from("testing"),
-        last_name: String::from("Last name"),
-        age: 32
-    };
-    let rectangle=util1::Rect{
-        width:32,
-        height:32
-    };
+    let ind=find_first_a(String::from("Preet"));
+    
+    // if ind==-1{
+    //     println!("no a's buddy");
+    // }
+    // else{
+    //     println!("a found at {}",ind);
+    // }
 
-    println!("Area of the rectangle is {}",rectangle.area());
-    println!("printing from the static method{}",util1::Rect::print_static_value());
-    println!("testing from differentfile {}",util1::testing_stuff_from_diff_file());
-    let shape=shape::square(3.0);
-    print_enum(shape);
-    // let dir=enums::Direction::North;
-    // println!("this is a enum {}", dir);
-    println!(" ");
-    println!("username is {}",user.first_name);
-    println!("username lastname is {}",user.last_name);
-    println!("username age is {}",user.age);
-    println!("The number is {}",length);
+    // match ind{
+    //     Some(value) => println!("index is {}",value),
+    //     None => println!("a not found")
+    // }
+
+    let result = read_to_string("a.txt");
+    match result {
+        Ok(data)=> println!("the data in the file is {}",data),
+        Err(err)=> println!("Some error occured see the details of the error {}",err)
+    };
 }
